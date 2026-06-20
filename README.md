@@ -70,8 +70,9 @@ validate → build → test + quality ──┐
 Click **Use this template** on GitHub, or clone and push to your own repo:
 
 ```bash
-git clone https://github.com/your-org/lightweight-devops-pipeline my-project
+git clone https://github.com/twisted07/lightweight-devops-pipeline my-project
 cd my-project
+mkdir .github && mv -r github/ .github/
 rm -rf .git && git init && git remote add origin <your-repo-url>
 ```
 
@@ -92,7 +93,7 @@ build:
 test:
   unit_command: "npm test"
   coverage_command: "npm run coverage"
-  coverage_threshold: 70
+  coverage_threshold: 70 # set this to your preferred test coverage level –– 100 for maximum coverage and 0 for no coverage
 
 quality:
   enabled: true
