@@ -31,7 +31,7 @@ project:
 # -----------------------------------------------------------------------------
 runtime:
   language: "node"              # node | python | java | go | csharp | php
-  version: "20"                 # See version reference above
+  version: "24"                 # See version reference above
 
 
 # -----------------------------------------------------------------------------
@@ -39,7 +39,7 @@ runtime:
 #
 # install_command examples by language:
 #   node   → "npm ci"
-#   python → "pip install -r requirements.txt"
+#   python → "pip install -r requirements.txt" uv commands are also supported
 #   java   → "mvn -B dependency:resolve"  (or leave "" for Gradle auto-resolve)
 #   go     → "go mod download"
 #   csharp → "dotnet restore"
@@ -56,6 +56,7 @@ runtime:
 build:
   install_command: "npm ci"      # Command to install dependencies (required)
   build_command: "npm run build" # Set to "" if your project has no build step
+  #  build_tool: "" # Uncomment this if the project is java (maven or gradle... maven is the default)
   artifact_path: "dist/"         # Path to output directory (uploaded between stages)
                                  # Set to "" if no artifact is produced
 
