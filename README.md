@@ -72,7 +72,7 @@ Click **Use this template** on GitHub, or clone and push to your own repo:
 ```bash
 git clone https://github.com/twisted07/lightweight-devops-pipeline my-project
 cd my-project
-mkdir .github && mv -r github/ .github/
+mkdir .github && mv github/ .github/
 rm -rf .git && git init && git remote add origin <your-repo-url>
 ```
 
