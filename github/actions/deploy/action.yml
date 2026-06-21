@@ -100,6 +100,12 @@ runs:
     # =========================================================================
     - name: Pre-deploy checks
       shell: bash
+      env:
+        # Expose secrets to the environment so the Python script can validate them
+        RENDER_API_KEY: ${{ inputs.render_api_key }}
+        VERCEL_TOKEN: ${{ inputs.vercel_token }}
+        RAILWAY_TOKEN: ${{ inputs.railway_token }}
+        HEROKU_API_KEY: ${{ inputs.heroku_api_key }}
       run: |
         python3 "${{ github.action_path }}/pre_deploy_check.py" \
           --target    "${{ inputs.target }}" \
@@ -248,7 +254,7 @@ runs:
           "https://api.render.com/v1/services/${{ inputs.render_staging_service_id }}/deploys" \
           --data '{"clearCache": "do_not_clear"}')
         cat /tmp/render_response.json
-        if [ "$RESPONSE" != "201" ]; then
+        if [ "$RESPONSE" != "201" || "$RESPONSE" != "202" ]; then
           echo "::error::Render staging deploy API returned HTTP $RESPONSE"
           exit 1
         fi
@@ -277,7 +283,7 @@ runs:
           "https://api.render.com/v1/services/${{ inputs.render_service_id }}/deploys" \
           --data '{"clearCache": "do_not_clear"}')
         cat /tmp/render_response.json
-        if [ "$RESPONSE" != "201" ]; then
+        if [ "$RESPONSE" != "201" || "$RESPONSE" != "202" ]; then
           echo "::error::Render production deploy API returned HTTP $RESPONSE"
           exit 1
         fi
