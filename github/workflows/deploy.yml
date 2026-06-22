@@ -113,7 +113,7 @@ jobs:
 
           with open(out, 'a') as f:
               w(f, 'language',        rt.get('language', 'node'))
-              w(f, 'version',         rt.get('version', '20'))
+              w(f, 'version',         rt.get('version', '24'))
               w(f, 'deploy_target',   dep.get('target', ''))
               w(f, 'project_name',    proj.get('name', 'project'))
               w(f, 'auto_deploy',     str(dep.get('staging',{}).get('auto_deploy', True)).lower())
@@ -162,10 +162,11 @@ jobs:
           target:            ${{ needs.read-config.outputs.deploy_target }}
           language:          ${{ needs.read-config.outputs.language }}
           project_name:      ${{ needs.read-config.outputs.project_name }}
+          ci_run_id:         ${{ github.event.workflow_run.id }}
           # Vercel
           vercel_token:      ${{ secrets.VERCEL_TOKEN }}
           vercel_org_id:     ${{ secrets.VERCEL_ORG_ID }}
-          vercel_project_id: ${{ needs.read-config.outputs.vercel_project }}
+          vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
           # Railway
           railway_token:     ${{ secrets.RAILWAY_TOKEN }}
           railway_service_id: ${{ needs.read-config.outputs.railway_svc_id }}
@@ -243,10 +244,11 @@ jobs:
           target:              ${{ needs.read-config.outputs.deploy_target }}
           language:            ${{ needs.read-config.outputs.language }}
           project_name:        ${{ needs.read-config.outputs.project_name }}
+          ci_run_id:         ${{ github.event.workflow_run.id }} 
           # Vercel
-          vercel_token:        ${{ secrets.VERCEL_TOKEN }}
-          vercel_org_id:       ${{ secrets.VERCEL_ORG_ID }}
-          vercel_project_id:   ${{ needs.read-config.outputs.vercel_project }}
+          vercel_token:      ${{ secrets.VERCEL_TOKEN }}
+          vercel_org_id:     ${{ secrets.VERCEL_ORG_ID }}
+          vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
           # Railway
           railway_token:       ${{ secrets.RAILWAY_TOKEN }}
           railway_service_id:  ${{ needs.read-config.outputs.railway_svc_id }}

@@ -36,7 +36,7 @@ def main():
     env_cap = args.environment.capitalize()
 
     url_line = (
-        f"| URL | [{args.url}]({args.url}) |"
+        f"| URL | {args.url} |"
         if args.url else
         "| URL | Not available |"
     )

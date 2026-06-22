@@ -166,7 +166,7 @@ def generate_html(args):
     <div style="flex:1;background:#f0ede8;border-radius:8px;height:14px;overflow:hidden">
       <div style="
         height:100%;
-        width:{min(float(args.coverage_pct), 100) if args.coverage_pct != 'unknown' else 0}%;
+        width:{min(float(args.coverage_pct), 100) if args.coverage_pct and args.coverage_pct != 'unknown' else 0}%;
         background:{'#1D9E75' if cov_st == 'pass' else '#D85A30'};
         border-radius:8px;
         transition:width .4s ease">

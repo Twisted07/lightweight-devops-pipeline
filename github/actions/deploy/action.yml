@@ -11,6 +11,10 @@ inputs:
   language:
     description: "Runtime language"
     required: true
+  ci_run_id:
+    description: "The ID of the triggering CI workflow run"
+    required: false
+    default: ""
 
   # Vercel
   vercel_token:
@@ -91,8 +95,12 @@ runs:
     # ── Download build artifact ───────────────────────────────────────────────
     - name: Download build artifact
       uses: actions/download-artifact@v4
+      id: download-artifact
       with:
         name: build-artifact
+        run-id: ${{ inputs.ci_run_id }}
+        github-token: ${{ github.token }}
+        repository: ${{ github.repository }}
       continue-on-error: true   # Not all projects produce a build artifact
 
     # =========================================================================
@@ -104,6 +112,8 @@ runs:
         # Expose secrets to the environment so the Python script can validate them
         RENDER_API_KEY: ${{ inputs.render_api_key }}
         VERCEL_TOKEN: ${{ inputs.vercel_token }}
+        VERCEL_PROJECT_ID: ${{ inputs.vercel_project_id }}
+        VERCEL_ORG_ID: ${{ inputs.vercel_org_id }}
         RAILWAY_TOKEN: ${{ inputs.railway_token }}
         HEROKU_API_KEY: ${{ inputs.heroku_api_key }}
       run: |
