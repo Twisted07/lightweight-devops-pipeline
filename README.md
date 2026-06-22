@@ -72,7 +72,7 @@ Click **Use this template** on GitHub, or clone and push to your own repo:
 ```bash
 git clone https://github.com/twisted07/lightweight-devops-pipeline my-project
 cd my-project
-mkdir .github && mv github/ .github/
+mkdir .github && mv github/* .github
 rm -rf .git && git init && git remote add origin <your-repo-url>
 ```
 
@@ -83,7 +83,7 @@ This is the **only file you need to touch**. Open it and fill in your project's 
 ```yaml
 runtime:
   language: "node"    # node | python | java | go | csharp | php
-  version: "20"
+  version: "24"
 
 build:
   install_command: "npm ci"
@@ -154,7 +154,7 @@ The pipeline starts immediately. You can watch it under the **Actions** tab.
 ```yaml
 runtime:
   language: "node"    # node | python | java | go | csharp | php
-  version: "20"       # see version examples in pipeline.config.yml
+  version: "24"       # see version examples in pipeline.config.yml
 ```
 
 ### `build`
