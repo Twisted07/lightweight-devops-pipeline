@@ -4,6 +4,7 @@
 # =============================================================================
 # This is the ONLY file your team needs to edit.
 # Fill in the values below and the pipeline handles the rest.
+# NOTE: All secrets should be created in their respective environments - staging and production.
 # Full documentation: .github/docs/SETUP.md
 # =============================================================================
 
@@ -196,8 +197,8 @@ deploy:
   # -- Vercel --
   # Required secrets: VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID
   vercel:
-    project_id: ""              # From your Vercel dashboard
-    org_id: ""                  # From your Vercel dashboard
+    project_id: ""              # From your Vercel dashboard - create this as a github secret and leave this as ""
+    org_id: ""                  # From your Vercel dashboard - create this as a github secret and leave this as ""
 
   # -- Railway --
   # Required secrets: RAILWAY_TOKEN
