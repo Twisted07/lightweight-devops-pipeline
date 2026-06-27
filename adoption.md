@@ -65,7 +65,7 @@ If the template is published as a GitHub Template Repository, click Use this tem
 
 Alternatively, clone and re-initialise manually:
 
-git clone <https://github.com/your-org/lightweight-devops-pipeline> my-project
+git clone <https://github.com/Twisted07/lightweight-devops-pipeline> my-project
 
 cd my-project
 
