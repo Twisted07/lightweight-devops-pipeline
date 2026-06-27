@@ -401,7 +401,7 @@ The template is released under the MIT licence. Contributions, pilot adoptions, 
 
 ## Adoption guidelines
 
-A detailed adoption guide is available as [`ADOPTION.md`](ADOPTION.md) (also distributed as a Word document alongside the research artefact). The sections below summarise the key points for developers who want a quick reference without opening a separate document.
+A detailed adoption guide is available as [`adoption.md`](adoption.md). The sections below summarise the key points for developers who want a quick reference without opening a separate document.
 
 ---
 
